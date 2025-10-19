@@ -1,329 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vadrifts Premium Banner</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Vadrifts Premium — Pricing & Benefits</title>
+    <meta name="description" content="Vadrifts Premium — Basic, Standard, Pro. Options: USD, Robux, or Discord Boosts." />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root{
+            --bg: #070707;
+            --panel: rgba(255,255,255,0.03);
+            --muted: rgba(255,255,255,0.6);
+            --glass: rgba(255,255,255,0.04);
+            --accent: linear-gradient(135deg,#ffd166,#ff7a7a);
+            --card-radius: 14px;
         }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0a0a0a;
-            color: #ffffff;
-            overflow: hidden;
-            height: 100vh;
-            position: relative;
+
+        *{box-sizing:border-box;margin:0;padding:0}
+        html,body{height:100%}
+        body{
+            font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background: var(--bg);
+            color:#fff;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            line-height:1.35;
         }
-        
-        .animated-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
+
+        .animated-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+        .glow-blob{position:absolute;border-radius:50%;filter: blur(44px);opacity:0.55;mix-blend-mode:screen}
+        .blob-1{width:380px;height:380px;background:radial-gradient(circle,#ff9a9a33 0%, #ff7a7a11 60%, transparent 100%);left:-160px;top:-120px;animation:float 26s ease-in-out infinite}
+        .blob-2{width:260px;height:260px;background:radial-gradient(circle,#ffd16633 0%, #ffd16611 60%, transparent 100%);right:18%;bottom:-80px;animation:float 30s ease-in-out infinite;animation-direction:reverse}
+        .blob-3{width:420px;height:420px;background:radial-gradient(circle,#6ee7b733 0%, #6ee7b711 60%, transparent 100%);right:-180px;top:18%;animation:float 34s ease-in-out infinite}
+        @keyframes float{0%,100%{transform:translateY(0) translateX(0) scale(1)}33%{transform:translateY(-28px) translateX(18px) scale(1.06)}66%{transform:translateY(22px) translateX(-18px) scale(0.96)}}
+
+        .wrap{
+            position:relative;
+            z-index:10;
+            max-width:1200px;
+            margin:4vh auto;
+            display:grid;
+            grid-template-columns: 1fr 460px;
+            gap:36px;
+            padding:36px;
+            align-items:start;
         }
-        
-        .glow-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(40px);
-            opacity: 0.6;
-            animation: float 20s ease-in-out infinite;
+
+        .hero{
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border-radius: var(--card-radius);
+            padding:36px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+            position:relative;
+            overflow:hidden;
         }
-        
-        .blob-1 {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 70%, transparent 100%);
-            top: -150px;
-            left: -150px;
-            animation-duration: 25s;
+        .logo-wrap{display:flex;align-items:center;gap:20px}
+        .logo-img{
+            width:120px;height:120px;border-radius:18px;flex:0 0 120px;
+            background:linear-gradient(180deg,#111,#222);
+            display:flex;align-items:center;justify-content:center;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.6), 0 0 22px rgba(255,255,255,0.04) inset;
         }
-        
-        .blob-2 {
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.03) 70%, transparent 100%);
-            bottom: -100px;
-            right: 20%;
-            animation-duration: 30s;
-            animation-direction: reverse;
+        .logo-img img{width:86px;height:86px;object-fit:contain;filter:drop-shadow(0 8px 32px rgba(255,255,255,0.06))}
+        .brand{
+            display:flex;flex-direction:column;
         }
-        
-        .blob-3 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 70%, transparent 100%);
-            top: 20%;
-            right: -200px;
-            animation-duration: 35s;
+        .brand h1{font-size:2.6rem;font-weight:600;letter-spacing:0.02em}
+        .brand p{color:var(--muted);font-size:0.95rem;margin-top:6px;text-transform:uppercase;letter-spacing:0.12em}
+
+        .short-desc{margin-top:22px;color:var(--muted);max-width:70%}
+        .badges{display:flex;gap:12px;margin-top:20px}
+        .badge{padding:8px 12px;border-radius:999px;background:var(--glass);font-weight:600;font-size:0.9rem;color:var(--muted)}
+
+        .features-block{display:grid;grid-template-columns:repeat(2, 1fr);gap:12px;margin-top:26px}
+        .feat{
+            background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);
         }
-        
-        @keyframes float {
-            0%, 100% { 
-                transform: translateY(0px) translateX(0px) scale(1);
-            }
-            33% { 
-                transform: translateY(-30px) translateX(20px) scale(1.1);
-            }
-            66% { 
-                transform: translateY(20px) translateX(-15px) scale(0.9);
-            }
+        .feat h4{font-size:0.96rem;margin-bottom:6px}
+        .feat p{color:var(--muted);font-size:0.85rem}
+
+        .pricing{
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);
+            box-shadow: 0 8px 22px rgba(0,0,0,0.6);
         }
-        
-        .container {
-            position: relative;
-            z-index: 10;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 8rem;
-            max-width: 1200px;
-            margin: 0 auto;
+        .pricing h2{font-size:1.6rem;margin-bottom:8px}
+        .subtitle{color:var(--muted);font-size:0.92rem;margin-bottom:16px}
+
+        .plans{display:flex;flex-direction:column;gap:14px}
+        .plan{
+            display:flex;gap:14px;align-items:center;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+            border:1px solid rgba(255,255,255,0.02);
+            transition:transform .15s ease, box-shadow .15s ease;
         }
-        
-        .left-section {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        .plan:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+        .plan .left{flex:1}
+        .plan .title{font-weight:600;font-size:1.05rem}
+        .plan .price{font-weight:700;font-size:1.05rem;color:#fff;margin-top:6px}
+        .plan .sub{color:var(--muted);font-size:0.88rem;margin-top:6px}
+        .plan .cta{display:flex;gap:8px;align-items:center}
+        .btn{
+            padding:8px 12px;border-radius:9px;border:none;background:transparent;color:#fff;font-weight:600;cursor:pointer;
+            border:1px solid rgba(255,255,255,0.06);
         }
-        
-        .logo-container {
-            text-align: center;
-            margin-bottom: 2rem;
+        .btn.primary{
+            background:linear-gradient(90deg,#ff9a66,#ff6a9a);border:none;color:#111;padding:8px 12px;border-radius:9px;
+            box-shadow:0 6px 18px rgba(255,106,154,0.12);
         }
-        
-        .vadrifts-logo {
-            width: 200px;
-            height: 200px;
-            margin-bottom: 1.5rem;
-            filter: drop-shadow(0 0 20px rgba(255,255,255,0.3));
-            animation: logoGlow 4s ease-in-out infinite alternate;
+        .btn.ghost{background:transparent;border:1px dashed rgba(255,255,255,0.06);color:var(--muted)}
+
+        .details{
+            margin-top:18px;padding-top:14px;border-top:1px dashed rgba(255,255,255,0.03);
         }
-        
-        @keyframes logoGlow {
-            0% { 
-                filter: drop-shadow(0 0 20px rgba(255,255,255,0.3));
-                transform: scale(1);
-            }
-            100% { 
-                filter: drop-shadow(0 0 40px rgba(255,255,255,0.5));
-                transform: scale(1.02);
-            }
+        .details h3{font-size:1.05rem;margin-bottom:8px}
+        .details ul{margin-top:8px;list-style:none}
+        .details li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.02);display:flex;gap:12px;align-items:flex-start}
+        .details li:last-child{border-bottom:none}
+        .details .point{font-weight:600;width:18%;min-width:120px;color:#fff}
+        .details .desc{color:var(--muted);font-size:0.95rem;flex:1}
+
+        .game-perks{margin-top:18px;background:rgba(255,255,255,0.01);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+        .game-perks h4{margin-bottom:8px}
+        .rollout{margin-top:12px;color:var(--muted);font-size:0.92rem}
+
+        @media (max-width:1000px){
+            .wrap{grid-template-columns:1fr; padding:22px; gap:18px}
+            .features-block{grid-template-columns:1fr}
+            .brand h1{font-size:2.1rem}
+            .logo-img{width:96px;height:96px}
         }
-        
-        .brand-name {
-            font-size: 3rem;
-            font-weight: 300;
-            letter-spacing: 0.15em;
-            color: #ffffff;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-        }
-        
-        .subtitle {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 1rem;
-            font-weight: 400;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-        
-        .right-section {
-            flex: 1;
-            padding-left: 4rem;
-        }
-        
-        .premium-title {
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            background: linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.7) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .features-list {
-            list-style: none;
-        }
-        
-        .feature-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding: 1.5rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .feature-item:hover {
-            padding-left: 1rem;
-            border-bottom-color: rgba(255, 255, 255, 0.2);
-        }
-        
-        .feature-item:last-child {
-            border-bottom: none;
-        }
-        
-        .feature-icon {
-            width: 24px;
-            height: 24px;
-            margin-right: 1.5rem;
-            opacity: 0.8;
-            flex-shrink: 0;
-        }
-        
-        .feature-content {
-            flex: 1;
-        }
-        
-        .feature-title {
-            font-size: 1.2rem;
-            font-weight: 500;
-            margin-bottom: 0.3rem;
-            color: #ffffff;
-        }
-        
-        .feature-desc {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.4;
-        }
-        
-        .accent-line {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 1px;
-            height: 200px;
-            background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
-            transform: translateX(-50%) translateY(-50%);
-            animation: pulse 3s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.8; }
-        }
-        
-        @media (max-width: 1024px) {
-            .container {
-                flex-direction: column;
-                padding: 4rem 2rem;
-                text-align: center;
-            }
-            
-            .right-section {
-                padding-left: 0;
-                padding-top: 3rem;
-                max-width: 600px;
-            }
-            
-            .vadrifts-logo {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .brand-name {
-                font-size: 2.5rem;
-            }
-            
-            .premium-title {
-                font-size: 2rem;
-            }
-            
-            .accent-line {
-                display: none;
-            }
-        }
+
+        .muted{color:var(--muted);font-size:0.9rem}
+        .accent-tag{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,#ffd16666,#ff7a7a44);font-weight:700;color:#111;font-size:0.82rem}
     </style>
 </head>
 <body>
-    <div class="animated-bg">
+    <div class="animated-bg" aria-hidden="true">
         <div class="glow-blob blob-1"></div>
         <div class="glow-blob blob-2"></div>
         <div class="glow-blob blob-3"></div>
     </div>
-    
-    <div class="accent-line"></div>
-    
-    <div class="container">
-        <div class="left-section">
-            <div class="logo-container">
-                <img src="https://i.imgur.com/ePueN25.png" 
-                     alt="Vadrifts Logo" 
-                     class="vadrifts-logo">
-                <h1 class="brand-name">Vadrifts</h1>
-                <p class="subtitle">Premium Access</p>
+
+    <main class="wrap" role="main" aria-label="Vadrifts Premium Pricing">
+        <!-- HERO / LEFT -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="logo-wrap">
+                <div class="logo-img" aria-hidden="true">
+                    <img src="https://i.imgur.com/ePueN25.png" alt="Vadrifts logo">
+                </div>
+
+                <div class="brand">
+                    <h1 id="hero-title">Vadrifts Premium</h1>
+                    <p class="muted">Smooth scripts, exclusive features, and insider access</p>
+                </div>
             </div>
-        </div>
-        
-        <div class="right-section">
-            <h2 class="premium-title">Premium Features</h2>
-            <ul class="features-list">
-                <li class="feature-item">
-                    <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                    </svg>
-                    <div class="feature-content">
-                        <div class="feature-title">No Key Systems</div>
-                        <div class="feature-desc">Automatically skips the annoying key systems on our Roblox scripts!</div>
+
+            <p class="short-desc">
+                Choose how you support Vadrifts — pay with USD, Robux, or Discord boosts.
+                Each tier unlocks progressively powerful features, early access, and exclusive scripts.
+            </p>
+
+            <div class="badges" aria-hidden="true">
+                <span class="badge">Pay: USD • Robux • Boosts</span>
+                <span class="badge">Auto verification (HWID)</span>
+                <span class="badge">Beta access included</span>
+            </div>
+
+            <div class="features-block" aria-hidden="true">
+                <div class="feat">
+                    <h4>No Ad/Key Systems</h4>
+                    <p class="muted">Premium users skip ad-links / public key gates on supported scripts.</p>
+                </div>
+                <div class="feat">
+                    <h4>Discord Perks</h4>
+                    <p class="muted">Premium role, image perms, and optional role color for Pro members.</p>
+                </div>
+                <div class="feat">
+                    <h4>Early & Beta Access</h4>
+                    <p class="muted">Try scripts weeks before public release (beta builds may have known issues).</p>
+                </div>
+                <div class="feat">
+                    <h4>Priority Support</h4>
+                    <p class="muted">Pro members get priority attention and direct feedback channels.</p>
+                </div>
+            </div>
+
+            <div style="margin-top:20px;">
+                <span class="accent-tag">Rollout: Basic first — Standard & Pro follow</span>
+                <p class="muted" style="margin-top:8px;max-width:86%;">Basic will launch first so we can stabilize the backend and premium checks. Existing Basic members will receive upgrade access automatically when features are ready.</p>
+            </div>
+        </section>
+
+        <!-- PRICING / RIGHT -->
+        <aside class="pricing" aria-labelledby="pricing-title">
+            <h2 id="pricing-title">Pricing</h2>
+            <p class="subtitle">Pick a plan — each option shows USD and Robux pricing</p>
+
+            <div class="plans" role="list">
+                <!-- Basic -->
+                <div class="plan" role="listitem" aria-label="Basic plan">
+                    <div class="left">
+                        <div class="title">Basic</div>
+                        <div class="price">$3 / month • <span style="font-weight:700">800 Robux</span></div>
+                        <div class="sub muted">Removes key systems + Discord Premium role</div>
                     </div>
-                </li>
-                
-                <li class="feature-item">
-                    <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                    </svg>
-                    <div class="feature-content">
-                        <div class="feature-title">Early Access to Scripts</div>
-                        <div class="feature-desc">Gain access to un-released Scripts or Updates weeks before they release!!</div>
+                    <div class="cta">
+                        <button class="btn primary" onclick="alert('USD purchase flow not implemented in this static demo')">Buy USD</button>
+                        <button class="btn" onclick="alert('Robux purchase flow: open Roblox DevProduct/gamepass')">Buy Robux</button>
+                        <button class="btn ghost" onclick="alert('Boost option: ask to donate 1 Discord boost')">1 Boost</button>
                     </div>
-                </li>
-                
-                <li class="feature-item">
-                    <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                    </svg>
-                    <div class="feature-content">
-                        <div class="feature-title">Exclusive Premium-only Scripts/Features</div>
-                        <div class="feature-desc">Unlock Owerpowered/Useful Premium-only Features/Scripts not available anywhere else!</div>
+                </div>
+
+                <!-- Standard -->
+                <div class="plan" role="listitem" aria-label="Standard plan">
+                    <div class="left">
+                        <div class="title">Standard</div>
+                        <div class="price">$8 / month • <span style="font-weight:700">1600 Robux</span></div>
+                        <div class="sub muted">All Basic + premium features, early access, 25% off paid scripts</div>
                     </div>
-                </li>
-                
-                <li class="feature-item">
-                    <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                    <div class="feature-content">
-                        <div class="feature-title">No Paid Scripts</div>
-                        <div class="feature-desc">Get Access to Paid Scripts without needing to pay for them</div>
+                    <div class="cta">
+                        <button class="btn primary" onclick="alert('USD purchase flow not implemented in this static demo')">Buy USD</button>
+                        <button class="btn" onclick="alert('Robux purchase flow: open Roblox DevProduct/gamepass')">Buy Robux</button>
+                        <button class="btn ghost" onclick="alert('2 Boosts option — coordinate with server owner')">2 Boosts</button>
                     </div>
-                </li>
-                
-                <li class="feature-item">
-                    <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                    </svg>
-                    <div class="feature-content">
-                        <div class="feature-title">Bot access, Image perms, Cool role</div>
-                        <div class="feature-desc">Get access to our discord obfuscation/dump bot in our Discord Server + Get a cool role with tons of permissions!! (including image perms)</div>
+                </div>
+
+                <!-- Pro -->
+                <div class="plan" role="listitem" aria-label="Pro plan">
+                    <div class="left">
+                        <div class="title">Pro</div>
+                        <div class="price">$15 / month • <span style="font-weight:700">2500 Robux</span></div>
+                        <div class="sub muted">All Standard + all paid scripts included, custom role color, exclusive scripts</div>
                     </div>
-                </li>
-            </ul>
-        </div>
-    </div>
+                    <div class="cta">
+                        <button class="btn primary" onclick="alert('USD purchase flow not implemented in this static demo')">Buy USD</button>
+                        <button class="btn" onclick="alert('Robux purchase flow: open Roblox DevProduct/gamepass')">Buy Robux</button>
+                        <button class="btn ghost" onclick="alert('Pro does not use boosts — choose USD or Robux')">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="details" aria-hidden="false">
+                <h3>Included / Game-specific perks</h3>
+                <ul>
+                    <li><div class="point">Starving Artists</div><div class="desc muted">Queue & priority for image generator, faster generation, custom presets, community art search, premade suggestions, improved stability/anti-crash.</div></li>
+                    <li><div class="point">Vadrifts.byp</div><div class="desc muted">Improved unsuspend voice/text chat tools (experimental — may be patched), faster chat bypass, auto stop tags, and QoL bypass features.</div></li>
+                    <li><div class="point">Paid Scripts</div><div class="desc muted">Pro members get access to paid scripts included in their subscription when released.</div></li>
+                    <li><div class="point">Beta Access</div><div class="desc muted">All tiers receive some beta builds — Standard/Pro get earlier access. Betas may have minor issues; they are for testing & feedback.</div></li>
+                </ul>
+
+                <div class="game-perks" aria-hidden="true">
+                    <h4>Tech / Implementation notes</h4>
+                    <p class="muted">We use an HWID + backend verification flow (server issues time-limited keys). Robux purchases will be redeemed via DevProducts/gamepasses that the backend recognizes and issues premium access for 30 days (renewable). USD purchases can be handled via Stripe/PayPal and mapped to the same backend user record.</p>
+                </div>
+
+                <p class="rollout muted">Rollout plan: Launch Basic first and stabilize. Standard and Pro features will be unlocked progressively — Basic buyers will be upgraded automatically as features are released.</p>
+            </div>
+        </aside>
+    </main>
+
+    <!-- tiny script only for demo CTA clicks (no external calls) -->
+    <script>
+        // purely demo: show easy copyable pricing for screenshots
+        /* If you later implement a real purchase integration:
+           - USD: integrate Stripe/PayPal server-side; return a signed token to the client.
+           - Robux: implement DevProduct/gamepass in Roblox and have the backend verify purchases.
+           - Boosts: coordinate manually (owner accepts boosts and grants access via backend).
+        */
+        console.log("Vadrifts Premium demo page loaded");
+    </script>
 </body>
 </html>
